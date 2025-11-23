@@ -1,6 +1,8 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CategoryController;
+use App\Http\Controllers\Api\ProductController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,4 +16,15 @@ Route::middleware('auth:sanctum')->group(function () {
         return $request->user();
     });
     Route::post('/logout', [AuthController::class, 'logout']);
+
+    Route::apiResource('/categories', CategoryController::class);
+
+    Route::get('/categories/{category}/products', [CategoryController::class, 'showProducts']);
+
+    Route::apiResource('/products', ProductController::class);
+
 });
+
+
+
+
