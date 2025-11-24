@@ -12,7 +12,7 @@ class Customer extends Model
     protected $keyType = 'int';
 
     protected $fillable = [
-        'name', 'phone', 'address',
+        'name', 'email','phone', 'address',
     ];
 
     public function transactions()

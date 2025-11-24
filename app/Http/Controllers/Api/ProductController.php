@@ -19,7 +19,6 @@ class ProductController extends Controller
     public function store(Request $request){
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3|max:255|unique:products,name',
-            'barcode' => 'required|min:3|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price' => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id_category',
@@ -52,7 +51,6 @@ class ProductController extends Controller
     public function update(Request $request, Product $product){
         $validator = Validator::make($request->all(), [
             'name' => 'required|min:3|max:255',
-            'barcode' => 'required|min:3|max:255',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'price' => 'required|numeric|min:0',
             'category_id' => 'required|exists:categories,id_category',
@@ -78,7 +76,6 @@ class ProductController extends Controller
     // Update data product
     $product->update([
         'name' => $request->name,
-        'barcode' => $request->barcode,
         'price' => $request->price,
         'category_id' => $request->category_id,
         'stock' => $request->stock ?? $product->stock,
