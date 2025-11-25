@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id('id_detail');
             $table->unsignedBigInteger('transaction_id');
             $table->foreign('transaction_id')->references('id_transaction')->on('transactions')->onDelete('cascade');
-            $table->unsignedBigInteger('id_product');
-            $table->foreignId('product_id')->references('id_product')->on('products')->onDelete('cascade');
+            $table->unsignedBigInteger('product_id');
+            $table->foreign('product_id')->references('id_product')->on('products')->onDelete('cascade');
             $table->integer('quantity');
             $table->decimal('price', 15, 2);
             $table->decimal('subtotal', 15, 2);
